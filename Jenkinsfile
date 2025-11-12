@@ -26,6 +26,19 @@ pipeline {
             }
         }
 
+        stage('SonarQube Analysis') {
+            steps {
+                echo "Running SonarQube analysis..."
+                // Replace with your SonarQube token
+                sh '''
+                    mvn sonar:sonar \
+                        -Dsonar.projectKey=jenkins-demo \
+                        -Dsonar.host.url=http://localhost:9000 \
+                        -Dsonar.login=Secret text
+                '''
+            }
+        }
+
         stage('Archive') {
             steps {
                 echo "Archiving artifacts..."
