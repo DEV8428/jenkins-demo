@@ -1,16 +1,11 @@
 pipeline {
     agent any  // Run on any available Jenkins agent
-
-    tools {
-        maven 'Maven3'  // Name of Maven installation configured in Jenkins
-        jdk 'JDK17'     // Name of JDK configured in Jenkins
-    }
-
     stages {
         stage('Checkout') {
             steps {
                 echo "Pulling code from GitHub..."
-                git branch: 'main', url: 'https://github.com/username/jenkins-demo.git'
+                git url: 'https://github.com/DEV8428/jenkins-demo',
+                branch: 'master'
             }
         }
 
